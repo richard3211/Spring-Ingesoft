@@ -15,13 +15,13 @@ and open the template in the editor.
     </head>
     <body>
         <div class="container">
-            <form class="form-horizontal" th:action="@{/register}" th:object="${usuario}" method="POST">
+            <form class="form-horizontal" th:action="@{/login}" th:object="${usuario}" method="POST">
                 <fieldset>
 
                     <!-- Form Name -->
                     <legend>
-                        Registro
-                        <a th:href="@{/login}">Ingreso</a>
+                        <a th:href="@{/register}">Registro</a>
+                        Ingreso
                     </legend>
 
                     <!-- Text input-->
@@ -42,20 +42,11 @@ and open the template in the editor.
                         </div>
                     </div>
 
-                    <!-- Text input-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="password_2">Confirmar contraseña</label>  
-                        <div class="col-md-4">
-                            <input id="password_2" name="password_2" type="password" placeholder="password" class="form-control input-md" required="">
-
-                        </div>
-                    </div>
-
                     <!-- Button -->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="send_register"></label>
+                        <label class="col-md-4 control-label"></label>
                         <div class="col-md-4">
-                            <button class="btn btn-success">Registrar</button>
+                            <button class="btn btn-success">Aceptar</button>
                         </div>
                     </div>
 
@@ -63,6 +54,8 @@ and open the template in the editor.
             </form>
 
             <div class="alert alert-warning" role="alert" th:text="${error}" th:unless="${error == null}"></div>
+            <div class="alert alert-primary" role="alert" th:text="${param.status}" th:unless="${param.status == null}"></div>
+            <div class="alert alert-success" role="alert" th:text="${info}" th:unless="${info == null}"></div>
         </div>
     </body>
 </html>

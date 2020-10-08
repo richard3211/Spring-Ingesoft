@@ -18,4 +18,5 @@ public interface IUsuarioService {
     public Optional<Usuario>listarId(int id);
     public int save(Usuario u);
     public void delete(int id);
+    Usuario findByNombre(String nombre);
 }

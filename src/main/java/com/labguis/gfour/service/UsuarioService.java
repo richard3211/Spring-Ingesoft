@@ -45,5 +45,10 @@ public class UsuarioService implements IUsuarioService {
     public void delete(int id) {
         data.deleteById(id);
     }
+
+    @Override
+    public Usuario findByNombre(String nombre) {
+        return data.findByNombre(nombre);
+    }
     
 }

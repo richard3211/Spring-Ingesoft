@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author Makot
  */
 @Repository
-public interface IUsuario extends CrudRepository<Usuario, Integer> {
-    
+public interface IUsuario extends CrudRepository<Usuario, Integer> {    
+    Usuario findByNombre(String nombre);
 }

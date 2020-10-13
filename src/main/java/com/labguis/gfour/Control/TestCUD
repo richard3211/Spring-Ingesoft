@@ -1,0 +1,72 @@
+package com.labguis.gfour.control;
+
+import com.labguis.gfour.modelo.Usuario;
+import com.labguis.gfour.service.UsuarioService;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ *
+ * @author DANIEL
+ */
+public class TestCUD {
+    private boolean operacion_exitosa= true;
+    private boolean operacion_no_exitosa= false;
+    
+    public TestCUD() {
+    }
+    
+    @Test
+    public void testcreate(){
+        UsuarioService service=new UsuarioService();
+        Usuario usuario=new Usuario();
+        
+        usuario.setNombre("juan");
+        usuario.setPassword("1234");
+        assertEquals(service.crear(usuario),operacion_exitosa);
+        usuario.setNombre("pedro");
+        usuario.setPassword("123");
+        assertEquals(service.crear(usuario),operacion_exitosa);
+        usuario.setNombre("maria");
+        usuario.setPassword("12345");
+        assertEquals(service.crear(usuario),operacion_exitosa);
+        usuario.setNombre("john");
+        usuario.setPassword("4567");
+        assertEquals(service.crear(usuario),operacion_exitosa);
+    }
+    
+    @Test
+    public void testUpdate(){
+        UsuarioService service=new UsuarioService();
+        Usuario usuario=new Usuario();
+        Usuario oldusuario=new Usuario();
+        
+        usuario.setNombre("henry");
+        usuario.setPassword("1234");
+        oldusuario.setNombre("henry");
+        oldusuario.setPassword("123");
+        assertEquals(service.actualizar(oldusuario, usuario),operacion_no_exitosa);
+        usuario.setNombre("pedro");
+        usuario.setPassword("321");
+        oldusuario.setNombre("pedro");
+        oldusuario.setPassword("123");
+        assertEquals(service.actualizar(oldusuario, usuario),operacion_exitosa);
+    }
+    
+    @Test
+    public void testDelete(){
+        UsuarioService service=new UsuarioService();
+        Usuario usuario=new Usuario();
+        
+        usuario.setNombre("henry");
+        usuario.setPassword("1234");
+        assertEquals(service.eliminar(usuario),operacion_no_exitosa);
+        usuario.setNombre("john");
+        usuario.setPassword("4567");
+        assertEquals(service.eliminar(usuario),operacion_exitosa);
+    }
+}
